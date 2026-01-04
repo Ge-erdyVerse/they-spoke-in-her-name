@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>They Spoke in Her Name</title>
+
+<!-- Social Media Preview -->
+<meta name="title" content="They Spoke in Her Name">
+<meta name="description" content="If the goddess never asked for blood, who do you think did?">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="They Spoke in Her Name">
+<meta property="og:description" content="If the goddess never asked for blood, who do you think did?">
+<meta property="og:image" content="https://they-spoke-in-her-name.netlify.app/images/pujo-village.jpg">
+<meta property="og:url" content="https://they-spoke-in-her-name.netlify.app/">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="They Spoke in Her Name">
+<meta name="twitter:description" content="If the goddess never asked for blood, who do you think did?">
+<meta name="twitter:image" content="https://they-spoke-in-her-name.netlify.app/images/pujo-village.jpg">
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BASE */
+html, body {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  font-family: 'Cormorant Garamond', serif;
+  overflow: hidden;
+}
+
+/* PAGE CONTAINER */
+#page-zero {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* BACKGROUND IMAGE */
+.background {
+  position: absolute;
+  inset: 0;
+  background-image: url("images/pujo-village.jpg"); /* <-- your image */
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.7);
+}
+
+/* DARK OVERLAY */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+/* CONTENT */
+.content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 12vh;
+  color: #eee;
+  text-align: center;
+}
+
+/* TITLE */
+.title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: 0.15em;
+  font-weight: 300;
+  margin-bottom: 1.2rem;
+}
+
+/* QUESTION */
+.question {
+  font-size: clamp(1rem, 2.2vw, 1.3rem);
+  opacity: 0.8;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.question:hover {
+  opacity: 1;
+}
+
+/* FADE OUT */
+.fade-out {
+  animation: fadeToBlack 1.2s ease forwards;
+}
+
+@keyframes fadeToBlack {
+  to {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .background {
+    width: 100vh;
+    height: 100vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(90deg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  body {
+    background: #000;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="page-zero">
+  <div class="background"></div>
+  <div class="overlay"></div>
+
+  <div class="content" id="content">
+    <div class="title">THEY SPOKE IN HER NAME</div>
+
+    <div class="question" id="enter">
+      If the goddess never asked for blood,<br />
+      who do you think did?
+    </div>
+  </div>
+</div>
+
+<script>
+const enter = document.getElementById("enter");
+const content = document.getElementById("content");
+
+enter.addEventListener("click", () => {
+  content.classList.add("fade-out");
+
+  setTimeout(() => {
+    window.location.href = "chapter1.html";
+  }, 1200);
+});
+
+/* FIX: restore content when navigating back */
+window.addEventListener("pageshow", () => {
+  content.classList.remove("fade-out");
+});
+</script>
+</body>
+</html>
